@@ -4,6 +4,7 @@
 //
 
 var ESC_FUNCTION = 'escPress';
+var ESC_CODE = 27;
 
 App.EscPressable = Ember.Mixin.create({
 
@@ -13,6 +14,10 @@ App.EscPressable = Ember.Mixin.create({
     var self = this;
 
     $(document).on('keydown', function(ev){
+
+      if( ev.which !== ESC_CODE )
+        return;
+
       var cancel = ['SELECT', 'INPUT'].indexOf(ev.target.tagName) > -1;
       var fxn = self[ESC_FUNCTION];
 
