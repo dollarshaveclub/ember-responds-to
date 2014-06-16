@@ -1,19 +1,19 @@
 
-// Keyable Mixin
-// --------------------
+// RespondsToEscKeypressMixin Mixin
+// --------------------------------------
 //
 
 var ESC_FUNCTION = 'escPress';
 var ESC_CODE = 27;
 
-App.EscPressable = Ember.Mixin.create({
+App.RespondsToEscKeypressMixin = Ember.Mixin.create({
 
   init: function() {
     this._super();
 
     var self = this;
 
-    $(document).on('keydown', function(ev){
+    $(document).on('keydown', function(ev) {
 
       if( ev.which !== ESC_CODE )
         return;
