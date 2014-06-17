@@ -1,9 +1,9 @@
 
-// Calls this.keypressEscape on ESC keypress
+// Calls this.escKeypress on ESC keydown
 // --------------------------------------
 //
 
-var ESC_FUNCTION = 'keypressEscape';
+var ESC_FUNCTION = 'escKeypress';
 var ESC_CODE = 27;
 
 App.KeypressEscapable = Ember.Mixin.create({
