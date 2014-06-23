@@ -12,7 +12,7 @@ App.RespondsToResize = Ember.Mixin.create({
     this._super();
     var self = this;
     onResize = function (e) {
-      window.requestAnimationFrame(self.resize.bind(self));
+      window.requestAnimationFrame( self.resize, self );
     };
   },
 
