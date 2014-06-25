@@ -3,6 +3,9 @@
 // --------------------------------------
 // Remember to call this._super() if you override didInsertElement or willDestroyElement.
 //
+
+require('../mixins/responds-to-resize');
+
 var onResize;
 
 App.RespondsToResize = Ember.Mixin.create({
@@ -12,22 +15,22 @@ App.RespondsToResize = Ember.Mixin.create({
     this._super();
     var self = this;
     onResize = function (e) {
-      window.requestAnimationFrame( self.resize, self );
+      window.requestAnimationFrame( self.resize.bind(self) );
     };
   },
 
   didInsertElement: function () {
     this._super();
     this.resize();
-    $(window).on('resize orientationchange', this, onResize);
+    $(window).on('resize orientationchange', this, onResize.bind(this));
   },
 
   willDestroyElement: function () {
-    $(window).off('resize orientationchange', this, onResize);
+    $(window).off('resize orientationchange', this, onResize.bind(this));
     this._super();
   },
 
   resize: function () {
-    console.log('[RespondsToResize] Please define a resize function in the view using this mixin.');
+    console.warn('[RespondsToResize] Please define a resize function in the view using this mixin.');
   }
 });
