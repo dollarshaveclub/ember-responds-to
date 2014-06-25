@@ -6,6 +6,7 @@
 
 require('../mixins/responds-to-resize');
 
+var RESIZE_EVENTS = 'resize orientationchange';
 var onResize;
 
 App.RespondsToResize = Ember.Mixin.create({
@@ -22,11 +23,11 @@ App.RespondsToResize = Ember.Mixin.create({
   didInsertElement: function () {
     this._super();
     this.resize();
-    $(window).on('resize orientationchange', this, onResize.bind(this));
+    $(window).on(RESIZE_EVENTS, this, onResize.bind(this));
   },
 
   willDestroyElement: function () {
-    $(window).off('resize orientationchange', this, onResize.bind(this));
+    $(window).off(RESIZE_EVENTS, this, onResize.bind(this));
     this._super();
   },
 
