@@ -4,8 +4,6 @@
 // Remember to call this._super() if you override didInsertElement or willDestroyElement.
 //
 
-require('../mixins/responds-to-resize');
-
 var RESIZE_EVENTS = 'resize orientationchange';
 
 App.RespondsToResize = Ember.Mixin.create({
