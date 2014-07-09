@@ -8,13 +8,15 @@ var RESIZE_EVENTS = 'resize orientationchange';
 
 App.RespondsToResize = Ember.Mixin.create({
 
+  defaultResizeEvents: RESIZE_EVENTS,
+
   didInsertElement: function () {
-    Ember.assert('RespondsToResize must be mixed in to a View', this instanceof Ember.View);
-    $(window).on( RESIZE_EVENTS, this.debouncedResize.bind(this) );
+    Ember.assert('RespondsToResize must be mixed in to a View/Component', this instanceof Ember.View || this instanceof Ember.Component);
+    $(window).on( this.get('defaultResizeEvents'), this.debouncedResize.bind(this) );
   },
 
   willDestroyElement: function () {
-    $(window).off( RESIZE_EVENTS, this.debouncedResize.bind(this) );
+    $(window).off( this.get('defaultResizeEvents'), this.debouncedResize.bind(this) );
     this._super();
   },
 
