@@ -1,10 +1,10 @@
 
-// Calls this.escKeypress on ESC keydown
+// Calls this.send('escKeypress') on ESC keydown
 // --------------------------------------
 // Remember to call this._super() if you override didInsertElement or willDestroyElement.
 //
 
-var ESC_FUNCTION_NAME = 'escKeypress';
+var ESC_ACTION_NAME = 'escKeypress';
 var onKeypress;
 var ESC_CODE = 27;
 
@@ -18,8 +18,7 @@ App.RespondsToEscKeypress = Ember.Mixin.create({
     onKeypress = function (e) {
       if (e.which !== ESC_CODE) return;
       if (['SELECT', 'INPUT'].indexOf(e.target.tagName) > -1) return;
-      var fn = self[ESC_FUNCTION_NAME];
-      if (fn) fn.call(self);
+      self.send(ESC_ACTION_NAME);
     };
   },
 
