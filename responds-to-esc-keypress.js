@@ -1,16 +1,16 @@
 
-// Calls this.send('escKeypress') on ESC keydown
+// Calls this.escKeypress() on ESC keydown
 // --------------------------------------
-// Remember to call this._super() if you override didInsertElement or willDestroyElement.
+// Remember to call this._super() if you override didInsertElement or willClearRender.
 //
 
-var ESC_ACTION_NAME = 'escKeypress';
-var onKeypress;
 var ESC_CODE = 27;
-var listeners = []; // Used to call listeners in LIFO order
+var listeners = [];
 
+// Calls handler on each View which RespondsToEscKeypress in
+// LIFO order, unless target element is a SELECT or INPUT.
 $(window).on('keydown', this, function (e) {
-  if (e.which !== ESC_CODE) return;
+  if (e.which !== ESC_CODE) return; // we only handle ESC
   if (['SELECT', 'INPUT'].indexOf(e.target.tagName) > -1) return;
   listeners.some(function (listener) {
     return listener.escKeypress();
