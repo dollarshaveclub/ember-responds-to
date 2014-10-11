@@ -9,7 +9,7 @@ var listeners = [];
 
 // Calls handler on each View which RespondsToEnterKeydown in LIFO order.
 $(window).on('keydown', this, function (e) {
-  if (e.which !== ENTER_CODE) return; // we only handle ESC
+  if (e.which !== ENTER_CODE) return;
   listeners.some(function (listener) {
     return listener.enterKeydown();
   });
