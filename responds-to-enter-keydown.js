@@ -18,7 +18,7 @@ $(window).on('keydown', this, function (e) {
 App.RespondsToEnterKeydown = Ember.Mixin.create({
 
   init: function () {
-    this._super();
+    this._super.apply(this, arguments);
     Ember.assert('RespondsToEnterKeydown must be mixed in to a View', this instanceof Ember.View);
   },
 
@@ -26,12 +26,12 @@ App.RespondsToEnterKeydown = Ember.Mixin.create({
   enterKeydown: function () { },
 
   didInsertElement: function () {
-    this._super();
+    this._super.apply(this, arguments);
     listeners.unshift(this);
   },
 
   willClearRender: function () {
-    this._super();
+    this._super.apply(this, arguments);
     listeners = listeners.filter(function (listener) {
       return listener !== this;
     }, this);

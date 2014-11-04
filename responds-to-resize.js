@@ -11,13 +11,14 @@ App.RespondsToResize = Ember.Mixin.create({
   defaultResizeEvents: RESIZE_EVENTS,
 
   didInsertElement: function () {
+    this._super.apply(this, arguments);
     Ember.assert('RespondsToResize must be mixed in to a View/Component', this instanceof Ember.View || this instanceof Ember.Component);
     $(window).on( this.get('defaultResizeEvents'), this.debouncedResize.bind(this) );
   },
 
   willDestroyElement: function () {
+    this._super.apply(this, arguments);
     $(window).off( this.get('defaultResizeEvents'), this.debouncedResize.bind(this) );
-    this._super();
   },
 
   debouncedResize: function (e) {

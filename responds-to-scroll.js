@@ -5,13 +5,14 @@
 App.RespondsToScroll = Ember.Mixin.create({
 
   didInsertElement: function () {
+    this._super.apply(this, arguments);
     Ember.assert('RespondsToScroll must be mixed in to a View/Component', this instanceof Ember.View || this instanceof Ember.Component);
     $(window).on('scroll', this.debouncedScroll.bind(this));
   },
 
   willDestroyElement: function () {
+    this._super.apply(this, arguments);
     $(window).off('scroll', this.debouncedScroll.bind(this));
-    this._super();
   },
 
   debouncedScroll: function (e) {
