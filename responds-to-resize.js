@@ -20,7 +20,7 @@ App.RespondsToResize = Ember.Mixin.create({
     this._super();
   },
 
-  debouncedResize: function(e) {
+  debouncedResize: function (e) {
     window.requestAnimationFrame( this.resize.bind(this, e) );
   },
 
