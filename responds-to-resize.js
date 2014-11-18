@@ -6,7 +6,9 @@
 
 var RESIZE_EVENTS = 'resize orientationchange';
 
-App.RespondsToResize = Ember.Mixin.create({
+App.RespondsToResize = Ember.Mixin.create(
+  Ember.Evented,
+{
 
   defaultResizeEvents: RESIZE_EVENTS,
 
