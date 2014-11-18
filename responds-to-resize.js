@@ -25,10 +25,16 @@ App.RespondsToResize = Ember.Mixin.create(
   },
 
   debouncedResize: function (e) {
-    window.requestAnimationFrame( this.resize.bind(this, e) );
+    var self = this;
+    window.requestAnimationFrame(function () {
+      var w = $(window).outerWidth();
+      self.set('windowWidth', w);
+      self.trigger('resize', w);
+    });
   },
 
-  resize: function (e) {
-    console.warn('[RespondsToResize] Please define a resize function in the view using this mixin.');
-  }
+  windowWidth: function () {
+    return $(window).outerWidth();
+  }.property()
+
 });
