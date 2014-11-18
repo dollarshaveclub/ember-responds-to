@@ -28,8 +28,12 @@ App.RespondsToResize = Ember.Mixin.create(
     var self = this;
     window.requestAnimationFrame(function () {
       var w = $(window).outerWidth();
-      self.set('windowWidth', w);
-      self.trigger('resize', w);
+
+      if ( !self.get('isDestroyed') ) {
+        self.set('windowWidth', w);
+        self.trigger('resize', w);
+      }
+
     });
   },
 
