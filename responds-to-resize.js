@@ -24,7 +24,7 @@ App.RespondsToResize = Ember.Mixin.create(
     $(window).off(this.get('defaultResizeEvents'), this.resizeHandler);
   },
 
-  debouncedResize: function (e) {
+  debouncedResize: function () {
     var self = this;
     window.requestAnimationFrame(function () {
       var w = $(window).outerWidth();

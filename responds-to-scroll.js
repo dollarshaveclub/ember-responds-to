@@ -16,8 +16,11 @@ App.RespondsToScroll = Ember.Mixin.create({
     $(window).off('scroll', this.scrollHandler);
   },
 
-  debouncedScroll: function (e) {
-    window.requestAnimationFrame(this.scroll.bind(this, e));
+  debouncedScroll: function () {
+    var self = this;
+    window.requestAnimationFrame(function () {
+      self.trigger('scroll');
+    });
   },
 
   scroll: function (e) {
