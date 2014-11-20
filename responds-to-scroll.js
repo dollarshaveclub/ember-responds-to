@@ -21,9 +21,5 @@ App.RespondsToScroll = Ember.Mixin.create({
     window.requestAnimationFrame(function () {
       self.trigger('scroll');
     });
-  },
-
-  scroll: function (e) {
-    console.warn('[RespondsToScroll] Please define a scroll function in the view using this mixin.');
   }
 });
