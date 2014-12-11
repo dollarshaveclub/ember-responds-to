@@ -27,7 +27,7 @@ App.RespondsToResize = Ember.Mixin.create(
   debouncedResize: function () {
     var self = this;
     window.requestAnimationFrame(function () {
-      var w = $(window).outerWidth();
+      var w = window.innerWidth;
 
       if ( !self.get('isDestroyed') ) {
         self.set('windowWidth', w);
@@ -38,7 +38,7 @@ App.RespondsToResize = Ember.Mixin.create(
   },
 
   windowWidth: function () {
-    return $(window).outerWidth();
+    return window.innerWidth;
   }.property()
 
 });
