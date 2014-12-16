@@ -12,7 +12,7 @@ var listeners = [];
 $(window).on('keydown', this, function (e) {
   if (e.which !== ESC_CODE) return;
   if (['SELECT', 'INPUT'].indexOf(e.target.tagName) > -1) return;
-  listeners.some(function (listener) {
+  return listeners.some(function (listener) {
     return listener.escKeydown();
   });
 });
