@@ -1,12 +1,8 @@
-
-// Calls this.resize on resize and orientationchange events
-// --------------------------------------
-// Remember to call this._super() if you override didInsertElement or willDestroyElement.
-//
+import Ember from 'ember';
 
 var RESIZE_EVENTS = 'resize orientationchange';
 
-App.RespondsToResize = Ember.Mixin.create(
+export default Ember.Mixin.create(
   Ember.Evented,
 {
 
@@ -32,6 +28,7 @@ App.RespondsToResize = Ember.Mixin.create(
       if ( !self.get('isDestroyed') ) {
         self.set('windowWidth', w);
         self.trigger('resize', w);
+        self.set('resizedAt', new Date().getTime());
       }
 
     });

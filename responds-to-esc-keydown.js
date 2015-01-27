@@ -1,15 +1,11 @@
-
-// Calls this.escKeydown() on ESC keydown
-// --------------------------------------
-// Remember to call this._super() if you override didInsertElement or willClearRender.
-//
+import Ember from 'ember';
 
 var ESC_CODE = 27;
 var listeners = [];
 
 // Calls handler on each View which RespondsToEscKeydown in
 // LIFO order, unless target element is a SELECT or INPUT.
-$(window).on('keydown', this, function (e) {
+Ember.$(window).on('keydown', this, function (e) {
   if (e.which !== ESC_CODE) return;
   if (['SELECT', 'INPUT'].indexOf(e.target.tagName) > -1) return;
   return listeners.some(function (listener) {
@@ -17,7 +13,7 @@ $(window).on('keydown', this, function (e) {
   });
 });
 
-App.RespondsToEscKeydown = Ember.Mixin.create({
+export default Ember.Mixin.create({
 
   init: function () {
     this._super.apply(this, arguments);
@@ -38,4 +34,5 @@ App.RespondsToEscKeydown = Ember.Mixin.create({
       return listener !== this;
     }, this);
   }
+
 });

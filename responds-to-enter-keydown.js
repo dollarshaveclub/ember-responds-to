@@ -1,21 +1,17 @@
-
-// Calls this.enterKeydown() on ENTER keydown
-// --------------------------------------
-// Remember to call this._super() if you override didInsertElement or willClearRender.
-//
+import Ember from 'ember';
 
 var ENTER_CODE = 13;
 var listeners = [];
 
 // Calls handler on each View which RespondsToEnterKeydown in LIFO order.
-$(window).on('keydown', this, function (e) {
+Ember.$(window).on('keydown', this, function (e) {
   if (e.which !== ENTER_CODE) return;
   return listeners.some(function (listener) {
     return listener.enterKeydown();
   });
 });
 
-App.RespondsToEnterKeydown = Ember.Mixin.create({
+export default Ember.Mixin.create({
 
   init: function () {
     this._super.apply(this, arguments);
@@ -36,4 +32,5 @@ App.RespondsToEnterKeydown = Ember.Mixin.create({
       return listener !== this;
     }, this);
   }
+
 });

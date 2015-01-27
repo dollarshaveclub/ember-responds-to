@@ -1,8 +1,6 @@
-// Calls this.scroll on scroll events
-// --------------------------------------
-// Remember to call this._super() if you override didInsertElement or willDestroyElement.
-//
-App.RespondsToScroll = Ember.Mixin.create({
+import Ember from 'ember';
+
+export default Ember.Mixin.create({
 
   didInsertElement: function () {
     this._super.apply(this, arguments);
@@ -22,4 +20,5 @@ App.RespondsToScroll = Ember.Mixin.create({
       self.trigger('scroll');
     });
   }
+
 });
