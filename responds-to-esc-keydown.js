@@ -15,21 +15,16 @@ Ember.$(window).on('keydown', this, function (e) {
 
 export default Ember.Mixin.create({
 
-  init: function () {
-    this._super.apply(this, arguments);
-    Ember.assert('RespondsToEscKeydown must be mixed in to a View', this instanceof Ember.View);
-  },
-
   // @return {boolean} stopPropagation
-  escKeydown: function () { },
+  escKeydown: Ember.$.noop,
 
   didInsertElement: function () {
-    this._super.apply(this, arguments);
+    this._super();
     listeners.unshift(this);
   },
 
   willClearRender: function () {
-    this._super.apply(this, arguments);
+    this._super();
     listeners = listeners.filter(function (listener) {
       return listener !== this;
     }, this);
