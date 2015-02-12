@@ -8,9 +8,8 @@ export default Ember.Mixin.create(
 
   defaultResizeEvents: RESIZE_EVENTS,
 
-  didInsertElement: function () {
+  init: function () {
     this._super.apply(this, arguments);
-    Ember.assert('RespondsToResize must be mixed in to a View/Component', this instanceof Ember.View || this instanceof Ember.Component);
     this.resizeHandler = this.debouncedResize.bind(this);
     $(window).on(this.get('defaultResizeEvents'), this.resizeHandler);
   },
@@ -30,7 +29,6 @@ export default Ember.Mixin.create(
         self.trigger('resize', w);
         self.set('resizedAt', new Date().getTime());
       }
-
     });
   },
 
