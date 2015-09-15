@@ -18,14 +18,12 @@ export default Ember.Mixin.create(
   },
 
   debouncedResize: function () {
-    var self = this;
-    window.requestAnimationFrame(function () {
+    window.requestAnimationFrame(() => {
+      if (this.get('isDestroyed')) return;
       var w = window.innerWidth;
-      if (!self.get('isDestroyed')) {
-        self.set('windowWidth', w);
-        self.trigger('resize', w);
-        self.set('resizedAt', new Date().getTime());
-      }
+      this.set('windowWidth', w);
+      this.trigger('resize', w);
+      this.set('resizedAt', new Date().getTime());
     });
   },
 

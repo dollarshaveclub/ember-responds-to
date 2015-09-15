@@ -8,9 +8,7 @@ var listeners = [];
 Ember.$(window).on('keydown', this, function (e) {
   if (e.which !== ESC_CODE) return;
   if (['SELECT', 'INPUT'].indexOf(e.target.tagName) > -1) return;
-  return listeners.some(function (listener) {
-    return listener.escKeydown();
-  });
+  listeners.some(listener => listener.escKeydown());
 });
 
 export default Ember.Mixin.create({
@@ -25,9 +23,7 @@ export default Ember.Mixin.create({
 
   willClearRender: function () {
     this._super();
-    listeners = listeners.filter(function (listener) {
-      return listener !== this;
-    }, this);
+    listeners = listeners.filter(listener => listener !== this);
   }
 
 });

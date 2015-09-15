@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
-export default Ember.Mixin.create({
+export default Ember.Mixin.create(
+  Ember.Evented,
+{
 
   didInsertElement: function () {
     this._super();
@@ -14,9 +16,9 @@ export default Ember.Mixin.create({
   },
 
   debouncedScroll: function () {
-    var self = this;
-    window.requestAnimationFrame(function () {
-      self.trigger('scroll');
+    window.requestAnimationFrame(() => {
+      if (this.get('isDestroyed')) return;
+      this.trigger('scroll');
     });
   }
 
