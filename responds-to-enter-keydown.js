@@ -3,13 +3,19 @@ import Ember from 'ember';
 var ENTER_CODE = 13;
 var listeners = [];
 
-// Calls handler on each View which RespondsToEnterKeydown in LIFO order.
+// Triggers 'enterKeydown' event and calls 'enterKeydown' on each listener in LIFO order.
+// - halts if a handler returns a truthy value
 Ember.$(window).on('keydown', this, function (e) {
   if (e.which !== ENTER_CODE) return;
-  listeners.some(listener => listener.enterKeydown());
+  listeners.some(listener => {
+    listener.trigger('enterKeydown');
+    return listener.enterKeydown();
+  });
 });
 
-export default Ember.Mixin.create({
+export default Ember.Mixin.create(
+  Ember.Evented,
+{
 
   // @return {boolean} stopPropagation
   enterKeydown: Ember.$.noop,
