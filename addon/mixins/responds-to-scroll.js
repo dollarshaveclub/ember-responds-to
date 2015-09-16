@@ -1,11 +1,11 @@
 import Ember from 'ember';
 
-// Debounces browser event, triggers 'scroll' event and calls 'onScroll' handler.
+// Debounces browser event, triggers 'scroll' event and calls 'scroll' handler.
 export default Ember.Mixin.create(
   Ember.Evented,
 {
 
-  onScroll: Ember.$.noop,
+  scroll: Ember.$.noop,
 
   didInsertElement: function () {
     this._super();
@@ -22,7 +22,7 @@ export default Ember.Mixin.create(
     window.requestAnimationFrame(() => {
       if (this.get('isDestroyed')) return;
       this.trigger('scroll');
-      this.onScroll();
+      this.scroll();
     });
   }
 

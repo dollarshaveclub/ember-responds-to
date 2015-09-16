@@ -1,6 +1,6 @@
 {
   "name": "ember-responds-to",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Ember mixins for browser event handling.",
   "directories": {
     "doc": "doc",
@@ -11,7 +11,7 @@
     "build": "ember build",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": "git://github.com/dollarshaveclub/ember-responds-to.git",
   "engines": {
     "node": ">= 0.10.0"
   },
