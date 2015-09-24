@@ -15,7 +15,7 @@ The enter and esc keydown event handlers are called in LIFO order and each can s
 
 Install the addon.
 
-`ember install addon ember-responds-to`
+`ember install ember-responds-to`
 
 Import the mixins in a component and use the events or the handlers.
 
