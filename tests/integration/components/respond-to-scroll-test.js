@@ -3,7 +3,10 @@ import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('respond-to-scroll', {
-  integration: true
+  integration: true,
+  beforeEach: function () {
+    window.requestAnimationFrame = setTimeout;
+  },
 });
 
 test('reacts when scroll event is triggered on window', function (assert) {
