@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
 // Debounces browser event, triggers 'scroll' event and calls 'scroll' handler.
-export default Ember.Mixin.create(Ember.Evented, {
+export default Ember.Mixin.create(
+  Ember.Evented,
+{
 
   scroll: Ember.$.noop,
 
@@ -18,7 +20,7 @@ export default Ember.Mixin.create(Ember.Evented, {
 
   debouncedScroll: function () {
     window.requestAnimationFrame(() => {
-      if (this.get('isDestroyed')) { return; }
+      if (this.get('isDestroyed')) return;
       Ember.run(() => {
         this.trigger('scroll');
         this.scroll();

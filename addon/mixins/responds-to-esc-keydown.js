@@ -7,15 +7,17 @@ var listeners = [];
 // - unless target element is a SELECT or INPUT
 // - halts if a handler returns a truthy value
 Ember.$(window).on('keydown', this, function (e) {
-  if (e.which !== ESC_CODE) { return; }
-  if (['SELECT', 'INPUT'].indexOf(e.target.tagName) > -1) { return; }
+  if (e.which !== ESC_CODE) return;
+  if (['SELECT', 'INPUT'].indexOf(e.target.tagName) > -1) return;
   listeners.some(listener => {
     listener.trigger('escKeydown');
     return listener.escKeydown();
   });
 });
 
-export default Ember.Mixin.create(Ember.Evented, {
+export default Ember.Mixin.create(
+  Ember.Evented,
+{
 
   // @return {boolean} stopPropagation
   escKeydown: Ember.$.noop,

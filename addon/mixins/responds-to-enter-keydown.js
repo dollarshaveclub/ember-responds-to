@@ -6,14 +6,16 @@ var listeners = [];
 // Triggers 'enterKeydown' event and calls 'enterKeydown' on each listener in LIFO order.
 // - halts if a handler returns a truthy value
 Ember.$(window).on('keydown', this, function (e) {
-  if (e.which !== ENTER_CODE) { return; }
+  if (e.which !== ENTER_CODE) return;
   listeners.some(listener => {
     listener.trigger('enterKeydown');
     return listener.enterKeydown();
   });
 });
 
-export default Ember.Mixin.create(Ember.Evented, {
+export default Ember.Mixin.create(
+  Ember.Evented,
+{
 
   // @return {boolean} stopPropagation
   enterKeydown: Ember.$.noop,

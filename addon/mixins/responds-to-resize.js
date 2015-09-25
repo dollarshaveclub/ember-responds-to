@@ -3,7 +3,9 @@ import Ember from 'ember';
 var RESIZE_EVENTS = 'resize orientationchange';
 
 // Debounces browser event, triggers 'resize' event and calls 'resize' handler.
-export default Ember.Mixin.create(Ember.Evented, {
+export default Ember.Mixin.create(
+  Ember.Evented,
+{
 
   resize: Ember.$.noop,
 
@@ -20,7 +22,7 @@ export default Ember.Mixin.create(Ember.Evented, {
 
   debouncedResize: function () {
     window.requestAnimationFrame(() => {
-      if (this.get('isDestroyed')) { return; }
+      if (this.get('isDestroyed')) return;
       Ember.run(() => {
         this.trigger('resize');
         this.resize();
