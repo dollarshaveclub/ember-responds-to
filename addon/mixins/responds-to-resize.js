@@ -30,8 +30,4 @@ export default Ember.Mixin.create(
     });
   },
 
-  windowWidth: Ember.computed(function () {
-    return window.innerWidth;
-  })
-
 });
