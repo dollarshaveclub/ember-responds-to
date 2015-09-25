@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import RespondsToScrollMixin from '../../../mixins/responds-to-scroll';
+import RespondsToScrollMixin from 'ember-responds-to/mixins/responds-to-scroll';
 import { module, test } from 'qunit';
 
 module('Unit | Mixin | responds to scroll');

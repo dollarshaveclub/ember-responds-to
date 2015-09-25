@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import RespondsToEnterKeydownMixin from '../../../mixins/responds-to-enter-keydown';
+import RespondsToEnterKeydownMixin from 'ember-responds-to/mixins/responds-to-enter-keydown';
 import { module, test } from 'qunit';
 
 module('Unit | Mixin | responds to enter keydown');

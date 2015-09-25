@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import RespondsToEscKeydownMixin from '../../../mixins/responds-to-esc-keydown';
+import RespondsToEscKeydownMixin from 'ember-responds-to/mixins/responds-to-esc-keydown';
 import { module, test } from 'qunit';
 
 module('Unit | Mixin | responds to esc keydown');

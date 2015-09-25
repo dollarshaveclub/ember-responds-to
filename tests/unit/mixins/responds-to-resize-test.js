@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import RespondsToResizeMixin from '../../../mixins/responds-to-resize';
+import RespondsToResizeMixin from 'ember-responds-to/mixins/responds-to-resize';
 import { module, test } from 'qunit';
 
 module('Unit | Mixin | responds to resize');
