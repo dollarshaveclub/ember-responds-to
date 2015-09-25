@@ -9,7 +9,7 @@ export default Ember.Mixin.create(Ember.Evented, {
 
   didInsertElement: function () {
     this._super();
-    this.resizeHandler = this.debouncedResize.bind(this);
+    this.resizeHandler = () => this.debouncedResize();
     Ember.$(window).on(RESIZE_EVENTS, this.resizeHandler);
   },
 
@@ -21,8 +21,10 @@ export default Ember.Mixin.create(Ember.Evented, {
   debouncedResize: function () {
     window.requestAnimationFrame(() => {
       if (this.get('isDestroyed')) { return; }
-      this.trigger('resize');
-      this.resize();
+      Ember.run(() => {
+        this.trigger('resize');
+        this.resize();
+      });
     });
   },
 
