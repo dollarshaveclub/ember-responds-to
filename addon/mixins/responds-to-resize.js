@@ -11,25 +11,27 @@ export default Ember.Mixin.create(
 
   didInsertElement: function () {
     this._super();
-    this.resizeHandler = this.debouncedResize.bind(this);
-    $(window).on(RESIZE_EVENTS, this.resizeHandler);
+    this.resizeHandler = () => this.debouncedResize();
+    Ember.$(window).on(RESIZE_EVENTS, this.resizeHandler);
   },
 
   willDestroyElement: function () {
     this._super();
-    $(window).off(RESIZE_EVENTS, this.resizeHandler);
+    Ember.$(window).off(RESIZE_EVENTS, this.resizeHandler);
   },
 
   debouncedResize: function () {
     window.requestAnimationFrame(() => {
       if (this.get('isDestroyed')) return;
-      this.trigger('resize');
-      this.resize();
+      Ember.run(() => {
+        this.trigger('resize');
+        this.resize();
+      });
     });
   },
 
-  windowWidth: function () {
+  windowWidth: Ember.computed(function () {
     return window.innerWidth;
-  }.property()
+  })
 
 });
