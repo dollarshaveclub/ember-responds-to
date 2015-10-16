@@ -61,3 +61,10 @@ export default Ember.Component.extend(
 });
 
 ```
+
+## In CI
+If you use `phantomjs` for testing you need to include a polyfill for `requestAnimationFrame`. To do so, add the file at https://gist.github.com/paulirish/1579671 to `vendor/` and add the following line to your `ember-cli-build.js`.
+
+```
+app.import('vendor/rAF.js', { type: 'test' });
+```
