@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+var mediaQueryList;
+
 // Triggers 'print' event and calls 'print' handler when the page is being printed.
 // Browser support: http://caniuse.com/#feat=matchmedia
 export default Ember.Mixin.create(Ember.Evented, {
@@ -8,28 +10,22 @@ export default Ember.Mixin.create(Ember.Evented, {
 
   didInsertElement: function () {
     this._super();
-
-    this._RespondsToPrint_mediaQueryList = window.matchMedia('print');
-    this._RespondsToPrint_printHandler = (mql) => this.debouncedprint(mql);
-
-    this._RespondsToPrint_mediaQueryList.addListener(this._RespondsToPrint_printHandler);
+    mediaQueryList = mediaQueryList || window.matchMedia('print');
+    this.printHandler = (mql) => this._printHandler(mql);
+    mediaQueryList.addListener(this.printHandler);
   },
 
   willDestroyElement: function () {
     this._super();
-    this._RespondsToPrint_mediaQueryList.removeListener(this._RespondsToPrint_printHandler);
+    mediaQueryList.removeListener(this.printHandler);
   },
 
-  debouncedprint: function (mql) {
-    if (mql.matches) {
-      if (this.get('isDestroyed') || this.get('isDestroying')) {
-        return;
-      }
-
-      Ember.run(() => {
-        this.trigger('print');
-        this.print();
-      });
-    }
+  _printHandler: function (mql) {
+    if (this.get('isDestroyed')) return;
+    if (!mql.matches) return;
+    Ember.run(() => {
+      this.trigger('print');
+      this.print();
+    });
   }
 });

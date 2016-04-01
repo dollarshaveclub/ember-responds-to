@@ -11,7 +11,7 @@ test('it works', function (assert) {
   assert.ok(subject);
 });
 
-test('debouncedprint - matches', function(assert) {
+test('_printHandler - matches', function(assert) {
   const mql = {
     matches: true
   };
@@ -23,13 +23,13 @@ test('debouncedprint - matches', function(assert) {
   });
   const subject = RespondsToPrintObject.create({});
 
-  subject.debouncedprint(mql);
+  subject._printHandler(mql);
 
-  assert.ok(onPrintTriggerSpy.called);
-  assert.ok(onPrintSpy.called);
+  assert.equal(onPrintTriggerSpy.callCount, 1);
+  assert.equal(onPrintSpy.callCount, 1);
 });
 
-test('debouncedprint - does not match', function(assert) {
+test('_printHandler - does not match', function(assert) {
   const mql = {
     matches: false
   };
@@ -41,8 +41,8 @@ test('debouncedprint - does not match', function(assert) {
   });
   const subject = RespondsToPrintObject.create({});
 
-  subject.debouncedprint(mql);
+  subject._printHandler(mql);
 
-  assert.ok(! onPrintTriggerSpy.called);
-  assert.ok(! onPrintSpy.called);
+  assert.equal(onPrintTriggerSpy.callCount, 0);
+  assert.equal(onPrintSpy.callCount, 0);
 });
