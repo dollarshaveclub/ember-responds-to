@@ -1,11 +1,12 @@
 import Ember from 'ember';
+function noop() { }
 
 // Debounces browser event, triggers 'scroll' event and calls 'scroll' handler.
 export default Ember.Mixin.create(
   Ember.Evented,
 {
 
-  scroll: Ember.$.noop,
+  scroll: noop,
 
   didInsertElement: function () {
     this._super();

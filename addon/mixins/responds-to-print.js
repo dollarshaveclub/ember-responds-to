@@ -1,12 +1,13 @@
 import Ember from 'ember';
 
 var mediaQueryList;
+function noop() { }
 
 // Triggers 'print' event and calls 'print' handler when the page is being printed.
 // Browser support: http://caniuse.com/#feat=matchmedia
 export default Ember.Mixin.create(Ember.Evented, {
 
-  print: Ember.$.noop,
+  print: noop,
 
   didInsertElement: function () {
     this._super();
