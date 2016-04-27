@@ -1,13 +1,14 @@
 import Ember from 'ember';
 
 var RESIZE_EVENTS = 'resize orientationchange';
+function noop() { }
 
 // Debounces browser event, triggers 'resize' event and calls 'resize' handler.
 export default Ember.Mixin.create(
   Ember.Evented,
 {
 
-  resize: Ember.$.noop,
+  resize: noop,
 
   didInsertElement: function () {
     this._super();
