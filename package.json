@@ -1,6 +1,6 @@
 {
   "name": "ember-responds-to",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Ember mixins for browser event handling.",
   "directories": {
     "doc": "doc",
