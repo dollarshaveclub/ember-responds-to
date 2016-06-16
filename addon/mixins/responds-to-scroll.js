@@ -7,23 +7,25 @@ export default Ember.Mixin.create(
 {
 
   scroll: noop,
+  scrollTarget: window, // Element or Selector
+  scrollEvent: 'scroll',
 
   didInsertElement: function () {
     this._super();
     this.scrollHandler = () => this.debouncedScroll();
-    Ember.$(window).on('scroll', this.scrollHandler);
+    Ember.$(this.get('scrollTarget')).on(this.get('scrollEvent'), this.scrollHandler);
   },
 
   willDestroyElement: function () {
     this._super();
-    Ember.$(window).off('scroll', this.scrollHandler);
+    Ember.$(this.get('scrollTarget')).off(this.get('scrollEvent'), this.scrollHandler);
   },
 
   debouncedScroll: function () {
     window.requestAnimationFrame(() => {
       if (this.get('isDestroyed')) return;
       Ember.run(() => {
-        this.trigger('scroll');
+        this.trigger(this.get('scrollEvent'));
         this.scroll();
       });
     });
