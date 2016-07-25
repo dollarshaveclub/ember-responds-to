@@ -30,7 +30,9 @@ import RespondsToResize from 'ember-responds-to/mixins/responds-to-resize';
 import RespondsToScroll from 'ember-responds-to/mixins/responds-to-scroll';
 import RespondsToPrint from 'ember-responds-to/mixins/responds-to-print';
 
-export default Ember.Component.extend(
+const {Component, on} = Ember;
+
+export default Component.extend(
   RespondsToEnterKeydown,
   RespondsToEscKeydown,
   RespondsToResize,
@@ -40,33 +42,33 @@ export default Ember.Component.extend(
 
   classNameBindings: [ 'isLandscape:landscape:portrait' ],
 
-  enterKeydown: function () {
+  enterKeydown() {
     this.sendAction('submit');
   },
 
-  escKeydown: function () {
+  escKeydown() {
     this.sendAction('close');
   },
 
-  logResize: function () {
+  logResize: on('resize', function () {
     console.log('resize event triggered');
-  }.on('resize'),
+  }),
 
-  logScroll: function () {
+  logScroll: on('scroll', function () {
     console.log('scroll event triggered');
-  }.on('scroll'),
+  }),
 
-  logPrint: function() {
+  logPrint: on('print', function () {
     console.log('print event triggered');
-  }.on('print'),
+  }),
 
   resize: () => console.log('resize handler called'),
   scroll: () => console.log('scroll handler called'),
   print: () => console.log('print handler called'),
 
-  setLandscape: function () {
+  setLandscape: on('didInsertElement', 'resize', function () {
     this.set('isLandscape', window.innerWidth > window.innerHeight);
-  }.on('didInsertElement', 'resize'),
+  }),
 
 });
 
