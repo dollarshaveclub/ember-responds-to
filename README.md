@@ -1,5 +1,7 @@
 # Ember-responds-to
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/dollarshaveclub/ember-responds-to.svg)](https://greenkeeper.io/)
+
 This [Ember CLI](http://www.ember-cli.com/) addon makes it easy to handle browser events in your components.
 
 * resize and orientationchange events trigger `resize` and call `resize`.
