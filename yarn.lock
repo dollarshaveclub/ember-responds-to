@@ -843,7 +843,7 @@ bluebird@^3.1.1, bluebird@^3.4.6:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
 
-body-parser@^1.2.0:
+body-parser@^1.12.3:
   version "1.17.1"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.17.1.tgz#75b3bc98ddd6e7e0d8ffe750dfaca5c66993fa47"
   dependencies:
@@ -1773,11 +1773,13 @@ ember-cli-broccoli-sane-watcher@^2.0.4:
     rsvp "^3.0.18"
     sane "^1.1.1"
 
-ember-cli-content-security-policy@0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/ember-cli-content-security-policy/-/ember-cli-content-security-policy-0.4.0.tgz#71e4f228e68bcefc313f0ffae26f3600a0093276"
+ember-cli-content-security-policy@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/ember-cli-content-security-policy/-/ember-cli-content-security-policy-0.6.1.tgz#5040088f55213f5cf55839edc2d6039710c9577b"
   dependencies:
-    body-parser "^1.2.0"
+    body-parser "^1.12.3"
+    chalk "^1.0.0"
+    ember-cli-babel "^5.0.0"
 
 ember-cli-dependency-checker@^1.0.0:
   version "1.3.0"
