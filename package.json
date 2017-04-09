@@ -37,7 +37,7 @@
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "2.0.0",
     "ember-sinon": "0.7.0",
-    "eslint": "^2.5.3",
+    "eslint": "3.19.0",
     "eslint-config-airbnb": "^6.2.0",
     "eslint-plugin-dollarshaveclub": "^1.0.0",
     "loader.js": "^4.2.3"
