@@ -1925,6 +1925,12 @@ ember-cli-test-loader@^1.1.1:
   dependencies:
     ember-cli-babel "^5.2.1"
 
+ember-cli-test-loader@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/ember-cli-test-loader/-/ember-cli-test-loader-2.1.0.tgz#16163bae0ac32cad1af13c4ed94c6c698b54d431"
+  dependencies:
+    ember-cli-babel "^6.0.0-beta.7"
+
 ember-cli-uglify@^1.0.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/ember-cli-uglify/-/ember-cli-uglify-1.2.0.tgz#3208c32b54bc2783056e8bb0d5cfe9bbaf17ffb2"
