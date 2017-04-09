@@ -15,7 +15,7 @@ test('reacts when scroll event is triggered on window', function (assert) {
   this.render(hbs`{{ respond-to-scroll }}`);
   Ember.$(window).trigger('scroll');
   setTimeout(() => {
-    assert.equal(this.$('#scroll-count').text(), 2, 'triggered a scroll');
+    assert.equal(this.$('#scroll-count').text(), 1, 'triggered a scroll');
     done();
   }, 20);
 });
@@ -30,7 +30,7 @@ test('it debounces the events inside an animation frame', function (assert) {
   }
 
   setTimeout(() => {
-    assert.equal(this.$('#scroll-count').text(), 2);
+    assert.equal(this.$('#scroll-count').text(), 1);
     done();
   }, 20);
 });

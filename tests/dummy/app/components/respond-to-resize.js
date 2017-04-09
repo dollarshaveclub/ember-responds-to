@@ -11,8 +11,8 @@ export default Ember.Component.extend(
     this.set('resizeCount', 0);
   },
 
-  resize() {
+  onResize: Ember.on('resize', function() {
     this.incrementProperty('resizeCount');
-  }
+  })
 
 });
