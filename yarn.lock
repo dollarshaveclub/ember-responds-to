@@ -1816,9 +1816,9 @@ ember-cli-htmlbars@1.2.0, ember-cli-htmlbars@^1.0.0:
     json-stable-stringify "^1.0.0"
     strip-bom "^2.0.0"
 
-ember-cli-ic-ajax@0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/ember-cli-ic-ajax/-/ember-cli-ic-ajax-0.2.4.tgz#448b07d39be09db135daff7a739d3135894536a1"
+ember-cli-ic-ajax@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ember-cli-ic-ajax/-/ember-cli-ic-ajax-1.0.0.tgz#359e885316924e3db8bedf07d77803dd39b26491"
   dependencies:
     ic-ajax "~2.0.1"
 
