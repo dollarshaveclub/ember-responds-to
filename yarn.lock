@@ -1009,19 +1009,6 @@ broccoli-config-replace@^1.1.2:
     debug "^2.2.0"
     fs-extra "^0.24.0"
 
-broccoli-filter@^0.1.6, broccoli-filter@~0.1.11:
-  version "0.1.14"
-  resolved "https://registry.yarnpkg.com/broccoli-filter/-/broccoli-filter-0.1.14.tgz#23cae3891ff9ebb7b4d7db00c6dcf03535daf7ad"
-  dependencies:
-    broccoli-kitchen-sink-helpers "^0.2.6"
-    broccoli-writer "^0.1.1"
-    mkdirp "^0.3.5"
-    promise-map-series "^0.2.1"
-    quick-temp "^0.1.2"
-    rsvp "^3.0.16"
-    symlink-or-copy "^1.0.1"
-    walk-sync "^0.1.3"
-
 broccoli-filter@^1.2.2, broccoli-filter@^1.2.3:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/broccoli-filter/-/broccoli-filter-1.2.4.tgz#409afb94b9a3a6da9fac8134e91e205f40cc7330"
@@ -1035,6 +1022,19 @@ broccoli-filter@^1.2.2, broccoli-filter@^1.2.3:
     rsvp "^3.0.18"
     symlink-or-copy "^1.0.1"
     walk-sync "^0.3.1"
+
+broccoli-filter@~0.1.11:
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/broccoli-filter/-/broccoli-filter-0.1.14.tgz#23cae3891ff9ebb7b4d7db00c6dcf03535daf7ad"
+  dependencies:
+    broccoli-kitchen-sink-helpers "^0.2.6"
+    broccoli-writer "^0.1.1"
+    mkdirp "^0.3.5"
+    promise-map-series "^0.2.1"
+    quick-temp "^0.1.2"
+    rsvp "^3.0.16"
+    symlink-or-copy "^1.0.1"
+    walk-sync "^0.1.3"
 
 broccoli-funnel-reducer@^1.0.0:
   version "1.0.0"
@@ -1805,14 +1805,7 @@ ember-cli-htmlbars-inline-precompile@0.3.1:
     ember-cli-babel "^5.1.3"
     ember-cli-htmlbars "^1.0.0"
 
-ember-cli-htmlbars@0.7.6:
-  version "0.7.6"
-  resolved "https://registry.yarnpkg.com/ember-cli-htmlbars/-/ember-cli-htmlbars-0.7.6.tgz#07e068eea68133d7e2fa6b505d87673f4bce145f"
-  dependencies:
-    broccoli-filter "^0.1.6"
-    ember-cli-version-checker "^1.0.2"
-
-ember-cli-htmlbars@^1.0.0:
+ember-cli-htmlbars@1.2.0, ember-cli-htmlbars@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/ember-cli-htmlbars/-/ember-cli-htmlbars-1.2.0.tgz#327e1a5dda1c85c6fcf8be888f7894b32c3f393b"
   dependencies:
