@@ -15,7 +15,7 @@ test('it should react when resize event is triggered on window', function (asser
   this.render(hbs`{{ respond-to-resize }}`);
   Ember.$(window).trigger('resize');
   setTimeout(() => {
-    assert.ok(this.$('#did-receive-resize').length, 'updated template');
+    assert.equal(this.$('#resize-count').text(), 2, 'triggered a resize');
     done();
   }, 20);
 });
@@ -26,7 +26,22 @@ test('it should react when orientationchange event is triggered on window', func
   this.render(hbs`{{ respond-to-resize }}`);
   Ember.$(window).trigger('orientationchange');
   setTimeout(() => {
-    assert.ok(this.$('#did-receive-resize').length, 'updated template');
+    assert.equal(this.$('#resize-count').text(), 2, 'triggered a resize');
+    done();
+  }, 20);
+});
+
+test('it debounces the events inside an animation frame', function (assert) {
+  assert.expect(1);
+  const done = assert.async();
+  this.render(hbs`{{ respond-to-resize }}`);
+
+  for (let i = 0; i < 10; i++) {
+    Ember.$(window).trigger('resize');
+  }
+
+  setTimeout(() => {
+    assert.equal(this.$('#resize-count').text(), 2);
     done();
   }, 20);
 });

@@ -5,8 +5,14 @@ export default Ember.Component.extend(
   RespondsToScroll,
 {
 
+  init() {
+    this._super(...arguments);
+
+    this.set('scrollCount', 0);
+  },
+
   scroll() {
-    this.set('didReceiveScroll', true);
+    this.incrementProperty('scrollCount');
   }
 
 });
