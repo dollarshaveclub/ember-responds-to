@@ -5,8 +5,14 @@ export default Ember.Component.extend(
   RespondsToResize,
 {
 
-  resize() {
-    this.set('didReceiveResize', true);
-  }
+  init() {
+    this._super(...arguments);
+
+    this.set('resizeCount', 0);
+  },
+
+  onResize: Ember.on('resize', function() {
+    this.incrementProperty('resizeCount');
+  })
 
 });
