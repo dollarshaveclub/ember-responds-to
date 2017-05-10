@@ -15,9 +15,10 @@ export default Ember.Mixin.create(
   didInsertElement: function () {
     this._super(...arguments);
 
-    this.resizeHandler = this.debounce(() => {
-      this.trigger('resize');
-      this.resize();
+    const self = this;
+    this.resizeHandler = this.debounce(function() {
+      self.trigger('resize', ...arguments);
+      self.resize(...arguments);
     });
 
     Ember.$(window).on(RESIZE_EVENTS, this.resizeHandler);

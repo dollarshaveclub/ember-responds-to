@@ -2,15 +2,18 @@ import Ember from 'ember';
 
 export default Ember.Mixin.create({
   debounce: function (handler) {
-    return () => {
-      if (!this.isScheduled) {
-        this.isScheduled = true;
+    const self = this;
+
+    return function() {
+      if (!self.isScheduled) {
+        self.isScheduled = true;
 
         window.requestAnimationFrame(() => {
-          this.isScheduled = false;
+          self.isScheduled = false;
 
-          if (this.get('isDestroyed')) return;
-          Ember.run(this, handler);
+          if (self.get('isDestroyed')) return;
+
+          Ember.run(this, handler, ...arguments);
         });
       }
     };
