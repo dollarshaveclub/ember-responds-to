@@ -14,9 +14,9 @@ export default Ember.Mixin.create(
   didInsertElement: function () {
     this._super(...arguments);
 
-    this.scrollHandler = this.debounce(() => {
-      this.trigger('scroll');
-      this.scroll();
+    this.scrollHandler = this.debounce((...args) => {
+      this.trigger('scroll', ...args);
+      this.scroll(...args);
     });
 
     Ember.$(window).on('scroll', this.scrollHandler);

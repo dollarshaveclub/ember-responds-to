@@ -34,3 +34,16 @@ test('it debounces the events inside an animation frame', function (assert) {
     done();
   }, 20);
 });
+
+test('it passes on the jQuery Event object', function (assert) {
+  assert.expect(1);
+  const done = assert.async();
+  this.render(hbs`{{ respond-to-scroll }}`);
+
+  Ember.$(window).trigger('scroll');
+
+  setTimeout(() => {
+    assert.equal(this.$('#arg-is-event').text(), 'true');
+    done();
+  }, 20);
+});

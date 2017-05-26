@@ -11,8 +11,9 @@ export default Ember.Component.extend(
     this.set('scrollCount', 0);
   },
 
-  onScroll: Ember.on('scroll', function() {
+  onScroll: Ember.on('scroll', function(evt) {
     this.incrementProperty('scrollCount');
+    this.set('argIsEvent', evt.constructor == jQuery.Event);
   })
 
 });

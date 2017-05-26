@@ -11,8 +11,9 @@ export default Ember.Component.extend(
     this.set('resizeCount', 0);
   },
 
-  onResize: Ember.on('resize', function() {
+  onResize: Ember.on('resize', function(evt) {
     this.incrementProperty('resizeCount');
+    this.set('argIsEvent', evt.constructor == jQuery.Event);
   })
 
 });
