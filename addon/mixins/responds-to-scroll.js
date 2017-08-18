@@ -7,24 +7,24 @@ function noop() { }
 export default Ember.Mixin.create(
   Ember.Evented,
   DebouncedResponse,
-{
+  {
 
-  scroll: noop,
+    scroll: noop,
 
-  didInsertElement: function () {
-    this._super(...arguments);
+    didInsertElement() {
+      this._super(...arguments);
 
-    this.scrollHandler = this.debounce((...args) => {
-      this.trigger('scroll', ...args);
-      this.scroll(...args);
-    });
+      this.scrollHandler = this.debounce((...args) => {
+        this.trigger('scroll', ...args);
+        this.scroll(...args);
+      });
 
-    Ember.$(window).on('scroll', this.scrollHandler);
-  },
+      Ember.$(window).on('scroll', this.scrollHandler);
+    },
 
-  willDestroyElement: function () {
-    this._super(...arguments);
+    willDestroyElement() {
+      this._super(...arguments);
 
-    Ember.$(window).off('scroll', this.scrollHandler);
-  }
-});
+      Ember.$(window).off('scroll', this.scrollHandler);
+    },
+  });

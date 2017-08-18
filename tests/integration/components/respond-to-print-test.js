@@ -1,6 +1,4 @@
-import { moduleForComponent, test } from 'ember-qunit';
-import Ember from 'ember';
-import hbs from 'htmlbars-inline-precompile';
+import { moduleForComponent } from 'ember-qunit';
 
 moduleForComponent('respond-to-print', {
   integration: true
