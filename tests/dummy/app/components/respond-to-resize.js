@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Ember from 'ember';
 import RespondsToResize from 'ember-responds-to/mixins/responds-to-resize';
 
@@ -13,7 +14,7 @@ export default Ember.Component.extend(
 
   onResize: Ember.on('resize', function(evt) {
     this.incrementProperty('resizeCount');
-    this.set('argIsEvent', evt.constructor == jQuery.Event);
+    this.set('argIsEvent', evt.constructor == $.Event);
   })
 
 });
