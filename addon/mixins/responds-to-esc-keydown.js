@@ -1,4 +1,6 @@
 import Ember from 'ember';
+import Evented from '@ember/object/evented';
+import Mixin from '@ember/object/mixin';
 
 const ESC_CODE = 27;
 let listeners = [];
@@ -18,8 +20,8 @@ if (typeof Ember.$ !== 'undefined') {
   });
 }
 
-export default Ember.Mixin.create(
-  Ember.Evented,
+export default Mixin.create(
+  Evented,
   {
 
   // @return {boolean} stopPropagation

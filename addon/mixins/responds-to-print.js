@@ -1,11 +1,13 @@
-import Ember from 'ember';
+import Evented from '@ember/object/evented';
+import Mixin from '@ember/object/mixin';
+import { run } from '@ember/runloop';
 
 let mediaQueryList;
 function noop() { }
 
 // Triggers 'print' event and calls 'print' handler when the page is being printed.
 // Browser support: http://caniuse.com/#feat=matchmedia
-export default Ember.Mixin.create(Ember.Evented, {
+export default Mixin.create(Evented, {
 
   print: noop,
 
@@ -24,9 +26,9 @@ export default Ember.Mixin.create(Ember.Evented, {
   _printHandler(mql) {
     if (this.get('isDestroyed')) return;
     if (!mql.matches) return;
-    Ember.run(() => {
+    run(() => {
       this.trigger('print');
       this.print();
     });
-  },
+  }
 });

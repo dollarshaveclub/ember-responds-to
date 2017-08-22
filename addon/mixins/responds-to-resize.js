@@ -1,12 +1,13 @@
-import Ember from 'ember';
+import Evented from '@ember/object/evented';
 import DebouncedResponse from './debounced-response';
+import Mixin from '@ember/object/mixin';
 
 const RESIZE_EVENTS = 'resize orientationchange';
 function noop() { }
 
 // Debounces browser event, triggers 'resize' event and calls 'resize' handler.
-export default Ember.Mixin.create(
-  Ember.Evented,
+export default Mixin.create(
+  Evented,
   DebouncedResponse,
   {
 
@@ -20,13 +21,17 @@ export default Ember.Mixin.create(
         this.resize(...args);
       });
 
-      Ember.$(window).on(RESIZE_EVENTS, this.resizeHandler);
+      RESIZE_EVENTS.split(' ').forEach((e) => {
+        window.addEventListener(e, this.resizeHandler, false);
+      });
     },
 
     willDestroyElement() {
       this._super(...arguments);
 
-      Ember.$(window).off(RESIZE_EVENTS, this.resizeHandler);
+      RESIZE_EVENTS.split(' ').forEach((e) => {
+        window.removeEventListener(e, this.resizeHandler, false);
+      });
     },
 
   });

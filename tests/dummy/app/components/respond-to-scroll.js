@@ -1,8 +1,8 @@
-import $ from 'jquery';
-import Ember from 'ember';
+import Component from '@ember/component';
 import RespondsToScroll from 'ember-responds-to/mixins/responds-to-scroll';
+import { on } from '@ember/object/evented';
 
-export default Ember.Component.extend(
+export default Component.extend(
   RespondsToScroll,
 {
 
@@ -12,9 +12,9 @@ export default Ember.Component.extend(
     this.set('scrollCount', 0);
   },
 
-  onScroll: Ember.on('scroll', function(evt) {
+  onScroll: on('scroll', function(evt) {
     this.incrementProperty('scrollCount');
-    this.set('argIsEvent', evt.constructor == $.Event);
+    this.set('argIsEvent', evt.constructor === Event);
   })
 
 });

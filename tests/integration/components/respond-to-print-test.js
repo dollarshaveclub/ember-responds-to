@@ -1,6 +1,6 @@
 import { moduleForComponent } from 'ember-qunit';
 
-moduleForComponent('respond-to-print', {
+moduleForComponent('respond-to-print', 'Integration | Component | respond to print', {
   integration: true
 });
 

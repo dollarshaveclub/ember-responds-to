@@ -1,6 +1,7 @@
-import Ember from 'ember';
+import Mixin from '@ember/object/mixin';
+import { run } from '@ember/runloop';
 
-export default Ember.Mixin.create({
+export default Mixin.create({
   debounce(handler) {
     return (...args) => {
       if (!this.isScheduled) {
@@ -11,9 +12,9 @@ export default Ember.Mixin.create({
 
           if (this.get('isDestroyed')) return;
 
-          Ember.run(this, handler, ...args);
+          run(this, handler, ...args);
         });
       }
     };
-  },
+  }
 });
