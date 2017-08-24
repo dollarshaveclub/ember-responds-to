@@ -1,14 +1,14 @@
-import Ember from 'ember';
 import DebouncedResponse from './debounced-response';
+import Evented from '@ember/object/evented';
+import Mixin from '@ember/object/mixin';
 
 function noop() { }
 
 // Debounces browser event, triggers 'scroll' event and calls 'scroll' handler.
-export default Ember.Mixin.create(
-  Ember.Evented,
+export default Mixin.create(
+  Evented,
   DebouncedResponse,
   {
-
     scroll: noop,
 
     didInsertElement() {
@@ -19,12 +19,12 @@ export default Ember.Mixin.create(
         this.scroll(...args);
       });
 
-      Ember.$(window).on('scroll', this.scrollHandler);
+      window.addEventListener('scroll', this.scrollHandler);
     },
 
     willDestroyElement() {
       this._super(...arguments);
 
-      Ember.$(window).off('scroll', this.scrollHandler);
+      window.removeEventListener('scroll', this.scrollHandler);
     },
   });

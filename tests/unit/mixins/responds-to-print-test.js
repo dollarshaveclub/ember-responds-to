@@ -1,12 +1,13 @@
-import Ember from 'ember';
+import EmberObject from '@ember/object';
 import RespondsToPrintMixin from 'ember-responds-to/mixins/responds-to-print';
 import { module, test } from 'qunit';
+import { on } from '@ember/object/evented';
 import sinon from 'sinon';
 
 module('mixin:responds-to-print');
 
 test('it works', function (assert) {
-  const RespondsToPrintObject = Ember.Object.extend(RespondsToPrintMixin);
+  const RespondsToPrintObject = EmberObject.extend(RespondsToPrintMixin);
   const subject = RespondsToPrintObject.create();
   assert.ok(subject);
 });
@@ -17,8 +18,8 @@ test('_printHandler - matches', function(assert) {
   };
   const onPrintTriggerSpy = sinon.spy();
   const onPrintSpy = sinon.spy();
-  const RespondsToPrintObject = Ember.Object.extend(RespondsToPrintMixin, {
-    onPrint: Ember.on('print', onPrintTriggerSpy),
+  const RespondsToPrintObject = EmberObject.extend(RespondsToPrintMixin, {
+    onPrint: on('print', onPrintTriggerSpy),
     print: onPrintSpy
   });
   const subject = RespondsToPrintObject.create({});
@@ -35,8 +36,8 @@ test('_printHandler - does not match', function(assert) {
   };
   const onPrintTriggerSpy = sinon.spy();
   const onPrintSpy = sinon.spy();
-  const RespondsToPrintObject = Ember.Object.extend(RespondsToPrintMixin, {
-    onPrint: Ember.on('print', onPrintTriggerSpy),
+  const RespondsToPrintObject = EmberObject.extend(RespondsToPrintMixin, {
+    onPrint: on('print', onPrintTriggerSpy),
     print: onPrintSpy
   });
   const subject = RespondsToPrintObject.create({});

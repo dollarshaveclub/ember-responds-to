@@ -23,14 +23,13 @@ Install the addon.
 Import the mixins in a component and use the events or the handlers.
 
 ```javascript
-import Ember from 'ember';
+import Component from '@ember/component';
 import RespondsToEnterKeydown from 'ember-responds-to/mixins/responds-to-enter-keydown';
 import RespondsToEscKeydown from 'ember-responds-to/mixins/responds-to-esc-keydown';
 import RespondsToResize from 'ember-responds-to/mixins/responds-to-resize';
 import RespondsToScroll from 'ember-responds-to/mixins/responds-to-scroll';
 import RespondsToPrint from 'ember-responds-to/mixins/responds-to-print';
-
-const {Component, on} = Ember;
+import { on } from '@ember/object/evented';
 
 export default Component.extend(
   RespondsToEnterKeydown,
