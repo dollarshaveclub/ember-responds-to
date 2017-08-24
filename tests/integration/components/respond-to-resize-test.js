@@ -3,10 +3,7 @@ import hbs from 'htmlbars-inline-precompile';
 import { triggerEvent } from 'ember-native-dom-helpers';
 
 moduleForComponent('respond-to-resize', 'Integration | Component | respond to resize', {
-  integration: true,
-  beforeEach: function() {
-    window.requestAnimationFrame = setTimeout;
-  }
+  integration: true
 });
 
 test('it should react when resize event is triggered on window', function(assert) {
