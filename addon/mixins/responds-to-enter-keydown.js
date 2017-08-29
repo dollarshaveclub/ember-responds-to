@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import Evented from '@ember/object/evented';
 import Mixin from '@ember/object/mixin';
 
@@ -6,23 +5,21 @@ const ENTER_CODE = 13;
 let listeners = [];
 function noop() { }
 
-if (typeof Ember.$ !== 'undefined') {
-  // Triggers 'enterKeydown' event and calls 'enterKeydown' on each listener in LIFO order.
-  // - halts if a handler returns a truthy value
-  Ember.$(window).on('keydown', this, (e) => {
-    if (e.which !== ENTER_CODE) return;
-    listeners.some((listener) => {
-      listener.trigger('enterKeydown');
-      return listener.enterKeydown();
-    });
+// Triggers 'enterKeydown' event and calls 'enterKeydown' on each listener in LIFO order.
+// - halts if a handler returns a truthy value
+window.addEventListener('keydown', this, (e) => {
+  if (e.which !== ENTER_CODE) return;
+  listeners.some((listener) => {
+    listener.trigger('enterKeydown');
+    return listener.enterKeydown();
   });
-}
+});
 
 export default Mixin.create(
   Evented,
   {
 
-  // @return {boolean} stopPropagation
+    // @return {boolean} stopPropagation
     enterKeydown: noop,
 
     didInsertElement() {
@@ -33,6 +30,6 @@ export default Mixin.create(
     willClearRender() {
       this._super();
       listeners = listeners.filter(listener => listener !== this);
-    },
+    }
 
   });

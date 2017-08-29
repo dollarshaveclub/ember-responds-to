@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import { triggerEvent } from 'ember-native-dom-helpers';
+import { find, triggerEvent } from 'ember-native-dom-helpers';
 
 moduleForComponent('respond-to-scroll', 'Integration | Component | respond to scroll', {
   integration: true
@@ -12,7 +12,7 @@ test('reacts when scroll event is triggered on window', function(assert) {
   this.render(hbs`{{ respond-to-scroll }}`);
   triggerEvent(window, 'scroll');
   setTimeout(() => {
-    assert.equal(this.$('#scroll-count').text(), 1, 'triggered a scroll');
+    assert.equal(find('#scroll-count').textContent, 1, 'triggered a scroll');
     done();
   }, 20);
 });
@@ -27,7 +27,7 @@ test('it debounces the events inside an animation frame', function(assert) {
   }
 
   setTimeout(() => {
-    assert.equal(this.$('#scroll-count').text(), 1);
+    assert.equal(find('#scroll-count').textContent, 1);
     done();
   }, 20);
 });
@@ -40,7 +40,7 @@ test('it passes on the Event object', function(assert) {
   triggerEvent(window, 'scroll');
 
   setTimeout(() => {
-    assert.equal(this.$('#arg-is-event').text(), 'true');
+    assert.equal(find('#arg-is-event').textContent, 'true');
     done();
   }, 20);
 });
