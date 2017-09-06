@@ -1,5 +1,10 @@
 # Ember-responds-to
 
+[![npm version](https://badge.fury.io/js/ember-responds-to.svg)](http://badge.fury.io/js/ember-responds-to)
+[![npm](https://img.shields.io/npm/dm/ember-responds-to.svg)]()
+[![Ember Observer Score](https://emberobserver.com/badges/ember-responds-to.svg)](https://emberobserver.com/addons/ember-responds-to)
+[![Build Status](https://travis-ci.org/dollarshaveclub/ember-responds-to.svg?branch=master)](https://travis-ci.org/dollarshaveclub/ember-responds-to)
+
 This [Ember CLI](http://www.ember-cli.com/) addon makes it easy to handle browser events in your components.
 
 * resize and orientationchange events trigger `resize` and call `resize`.
