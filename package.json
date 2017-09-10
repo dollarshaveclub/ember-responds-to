@@ -1,6 +1,6 @@
 {
   "name": "ember-responds-to",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Ember mixins for browser event handling.",
   "keywords": [
     "ember-addon",
